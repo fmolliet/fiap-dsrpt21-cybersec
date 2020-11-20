@@ -3,6 +3,8 @@ import os
 from flask import Flask, request, jsonify
 import importlib
 
+from PastebinCrawler       import PasteBin
+from HaveibeenpwnedCrawler import HaveIbeenPwed 
 from crawler import GoogleCrawler
 from pprint import pprint
 
@@ -20,10 +22,18 @@ def search():
     except:
         return jsonify( {"code": 500, "message": "Erro inesperado" })
 
-@app.route("/teste", methods=["POST"])
-def home():
-    res = request.json
-    return res['id']
+@app.route("/pastebin", methods=["GET"])
+def pastebin():
+    return PasteBin().crawlRaw('ubB4qbH6')
+    
+    
+@app.route("/haveibeen", methods=["GET"])
+def haveibeenpwned():
+    try:
+        return HaveIbeenPwed().crawlJson('teste@teste.com')
+    except:
+        return None
+    
 
 if __name__ == '__main__':
     app.run()
