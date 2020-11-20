@@ -1,8 +1,17 @@
-from bs4 import BeautifulSoup
 import requests
+from bs4          import BeautifulSoup
 from urllib.parse import quote
+from PrivateData  import Treated
 
 class GoogleCrawler(object):
+    
+    types = {
+        'file'   : 'filetype',
+        'url'    : 'allinrl', 
+        'title'  : 'intitle',
+        'website': 'site',
+        'default': ''
+    }
     
     def __init__(self):
         super().__init__()
@@ -25,10 +34,18 @@ class GoogleCrawler(object):
             self.results.append({
                 'title': title,
                 'url': url,
-                'des': des
+                'description': des
             })
 
-    def search(self, query: str) -> list:
+    def search(self, tipe: str, search: str) -> list:
+        
+        searchType = self.types[tipe]
+        
+        if self.types[tipe] != '':
+            searchType = searchType + ':'
+            
+        query = searchType + search
+    
         # realiza primeira busca
         response = self.__get_source('https://www.google.com/search?q=%s' % quote(query))
         # Inicializa BeautifulSoup
@@ -57,7 +74,4 @@ class GoogleCrawler(object):
                 soup.select('td > a.fl') 
         
         
-           
-                
-        print('Total de {} resultados'.format(len(self.results) ))
         return self.results
