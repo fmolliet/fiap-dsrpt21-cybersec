@@ -20,7 +20,7 @@ def search():
     except:
         return jsonify( {"code": 500, "message": "Erro inesperado" })
     
-@app.route("/haveibeen", methods=["GET"])
+@app.route("/haveibeen", methods=["POST"])
 def haveibeenpwned():
     try:
         res   = request.json
