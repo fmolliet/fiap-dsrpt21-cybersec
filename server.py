@@ -23,7 +23,9 @@ def search():
 @app.route("/haveibeen", methods=["GET"])
 def haveibeenpwned():
     try:
-        return HaveIbeenPwed().crawlJson('teste@teste.com')
+        res   = request.json
+        email  = res['email']
+        return HaveIbeenPwed().crawlJson(email)
     except:
         return None
     
