@@ -1,6 +1,6 @@
 # DSRPT SEARCH DATA API 🛰
 
-API de webscrapying e public data. Para o desenvolvimento utilizei request, beatuiful soup para formatação e Flask para disponibilizar o serviço como API. Para subir o sistema ter nos requisitos:
+API de webscrapying e public data. Para o desenvolvimento utilizei request, beautiful soup para formatação e Flask para disponibilizar o serviço como API. Para subir o sistema ter nos requisitos:
 
   - Python 3.7.6 com a lib [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
