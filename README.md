@@ -1,4 +1,4 @@
-# Learning MQTT - Message Broker 📨
+# DSRPT SEARCH DATA API 🛰
 
 API de webscrapying e public data. Para o desenvolvimento utilizei request, beatuiful soup para formatação e Flask para disponibilizar o serviço como API. Para subir o sistema ter nos requisitos:
 
