@@ -13,7 +13,6 @@ class PasteBin(object):
     def __get_source(self, url: str) -> requests.Response:
         return requests.get(url, headers=self.headers)
         
-    def crawlRaw(self, query: str ) -> str:
+    def crawlRaw(self, query: str ) -> dict:
         response = self.__get_source('https://pastebin.com/raw/%s' % quote(query))
-        
-        return response.text# BeautifulSoup(response.text, 'html.parser')
+        return response.text

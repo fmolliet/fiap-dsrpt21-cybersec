@@ -3,9 +3,9 @@ import os
 from flask import Flask, request, jsonify
 import importlib
 
-from PastebinCrawler       import PasteBin
+
 from HaveibeenpwnedCrawler import HaveIbeenPwed 
-from crawler               import GoogleCrawler
+from pipeline import Pipeline
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -16,14 +16,9 @@ def search():
         res   = request.json
         tipo  = res['type']
         query = res['query']
-        return jsonify(GoogleCrawler().search(tipo, query))
+        return jsonify(Pipeline(tipo, query).struct_data())
     except:
         return jsonify( {"code": 500, "message": "Erro inesperado" })
-
-@app.route("/pastebin", methods=["GET"])
-def pastebin():
-    return PasteBin().crawlRaw('ubB4qbH6')
-    
     
 @app.route("/haveibeen", methods=["GET"])
 def haveibeenpwned():
