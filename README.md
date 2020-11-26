@@ -62,3 +62,7 @@ Body: JSON
 	"email":"teste@teste.com" // email que será buscado
 }
 ```
+
+### Desenvolvido por:
+- Fabio Pedreira Molliet
+- Guilherme Valério Lana
